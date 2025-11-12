@@ -1,0 +1,184 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.17.7"
+  },
+  "cells": [
+    {
+      "id": "MJUe",
+      "code_hash": "3c351de0332030f7b67e01a55cd980e0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"linear-regression-the-danger-of-assumptions\">Linear Regression: The Danger of Assumptions</h1>\n<span class=\"paragraph\">Linear regression is one of the most commonly used statistical methods, but it comes with\n<strong>critical assumptions</strong> that are often ignored. This notebook demonstrates what happens\nwhen you blindly apply linear regression without understanding these assumptions.</span>\n<h2 id=\"the-five-key-assumptions\">The Five Key Assumptions</h2>\n<ol>\n<li><strong>Linearity</strong>: The relationship between X and Y is linear</li>\n<li><strong>Independence</strong>: Observations are independent of each other</li>\n<li><strong>Homoscedasticity</strong>: Variance of residuals is constant across all levels of X</li>\n<li><strong>Normality</strong>: Residuals are normally distributed</li>\n<li><strong>No Multicollinearity</strong>: Predictor variables are not highly correlated (for multiple regression)</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "26a76c1521773d84ccf4b998e9a195f2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><hr />\n<h2 id=\"1-the-good-case-when-assumptions-hold\">1. The \"Good\" Case: When Assumptions Hold</h2>\n<span class=\"paragraph\">Let's start with data that actually satisfies the assumptions. This is what linear regression\nwas designed for.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "6b960bcf9395c88f038e82c2e8e93956",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><hr />\n<h2 id=\"2-violation-non-linearity\">2. Violation: Non-Linearity</h2>\n<span class=\"paragraph\"><strong>What happens when the true relationship is non-linear, but we force a linear fit?</strong></span>\n<span class=\"paragraph\">This is one of the most common mistakes. The relationship might be exponential,\nlogarithmic, or polynomial, but we try to fit a straight line anyway.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "d411a0f2a188fdd62fc1123060e74b82",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><hr />\n<h2 id=\"3-violation-heteroscedasticity-non-constant-variance\">3. Violation: Heteroscedasticity (Non-Constant Variance)</h2>\n<span class=\"paragraph\"><strong>What if the variance of errors increases with X?</strong></span>\n<span class=\"paragraph\">This is common in real-world data: as values get larger, variability often increases\n(e.g., income, housing prices, sales figures).</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "a47f54758b0282773adfb3a0e63c130e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><hr />\n<h2 id=\"4-violation-autocorrelation-for-time-series\">4. Violation: Autocorrelation (For Time Series)</h2>\n<span class=\"paragraph\"><strong>What if observations are not independent?</strong></span>\n<span class=\"paragraph\">This is critical for time series data. If residuals are correlated with previous\nresiduals, your standard errors are wrong.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "c92d9e5f1d90aebf0955a7da49477907",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><hr />\n<h2 id=\"5-violation-multicollinearity\">5. Violation: Multicollinearity</h2>\n<span class=\"paragraph\"><strong>What if predictor variables are highly correlated with each other?</strong></span>\n<span class=\"paragraph\">This makes it impossible to determine the individual effect of each predictor.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "7ec7c375d681a572e393de819764ff80",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>The Problem with Multicollinearity:</strong></span>\n<ul>\n<li>\ud83d\udd04 Coefficients become unstable - small data changes cause huge coefficient swings</li>\n<li>\u26a0\ufe0f Can't interpret individual effects - is it X1 or X2 causing the change?</li>\n<li>\u274c Standard errors inflate - coefficients may appear non-significant</li>\n<li>\ud83c\udfaf The model predicts well (good R\u00b2) but you can't trust the coefficients</li>\n</ul>\n<span class=\"paragraph\"><strong>Real-world example:</strong> Using both \"square footage\" and \"number of rooms\" to predict\nhouse prices - they're highly correlated, making individual effects unclear.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "fb33f9a69d4df63a259aea869d7c88b6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><hr />\n<h2 id=\"summary-why-this-matters\">Summary: Why This Matters</h2>\n<h3 id=\"the-danger-of-blind-application\">The Danger of Blind Application</h3>\n<table>\n<thead>\n<tr>\n<th>Violation</th>\n<th>You Might See</th>\n<th>Reality</th>\n<th>Consequence</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>Non-linearity</strong></td>\n<td>\"Good\" R\u00b2</td>\n<td>Systematic bias</td>\n<td>Wrong predictions at extremes</td>\n</tr>\n<tr>\n<td><strong>Heteroscedasticity</strong></td>\n<td>\"Significant\" results</td>\n<td>Invalid confidence intervals</td>\n<td>Wrong conclusions about uncertainty</td>\n</tr>\n<tr>\n<td><strong>Autocorrelation</strong></td>\n<td>\"Tight\" confidence bands</td>\n<td>Underestimated uncertainty</td>\n<td>Overconfident forecasts</td>\n</tr>\n<tr>\n<td><strong>Multicollinearity</strong></td>\n<td>Good predictions</td>\n<td>Unstable coefficients</td>\n<td>Can't interpret effects</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"what-you-should-do\">What You Should Do</h3>\n<ol>\n<li><strong>Always plot your data</strong> - Look at scatter plots before modeling</li>\n<li><strong>Check residual plots</strong> - Random scatter is good, patterns are bad</li>\n<li><strong>Use Q-Q plots</strong> - Check if residuals are normally distributed</li>\n<li><strong>Calculate VIF</strong> - Check for multicollinearity (VIF &gt; 10 is problematic)</li>\n<li><strong>Use domain knowledge</strong> - Does a linear relationship make sense?</li>\n</ol>\n<h3 id=\"the-bottom-line\">The Bottom Line</h3>\n<span class=\"paragraph\">Linear regression is powerful <strong>when used correctly</strong>. But it's not a magic black box.\nUnderstanding and checking assumptions is not optional - it's the difference between\nvalid insights and misleading conclusions.</span>\n<span class=\"paragraph\"><strong>Remember:</strong> A model that fits well (high R\u00b2) can still be completely wrong if\nassumptions are violated! \ud83d\udea8</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "816100277029bd58172dcf1657fae4ea",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "7348d272a167b891e52d5d9f40604d1e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "b520490e8cbad4efdaca43df4a4bac23",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "a9bfb6122488fdb7e44f1c3ce1500270",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "87b0d751c3479357ac6283a0d9c98659",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "7224a3dbe112d0ec56d00b742e9ced8a",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "c87079b9dc294cc950aae7ffbd59d788",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "014449196d3b03d81dd3b0bb780a4d64",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "d322f96ec6a49298b106dbb053a45bd4",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "aee08b9fe9e8b5af3869f90430c443cb",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "f255903ba1686fe9b3d9328f0535c32b",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
