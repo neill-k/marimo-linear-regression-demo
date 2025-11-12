@@ -1,7 +1,10 @@
 import marimo
 
 __generated_with = "0.17.7"
-app = marimo.App(width="medium")
+app = marimo.App(
+    width="medium",
+    layout_file="layouts/ai_research_demo.slides.json",
+)
 
 
 @app.cell
@@ -17,7 +20,7 @@ def _(mo):
 
     ## ... or can I just ask AI to "analyze the data"?
 
-    Imagine that you ask your favorite chatbot to run a linear regression on 4 sets of data.
+    Imagine that you've asked a chatbot how to run linear regression on four sets of data.
     """)
     return
 
@@ -49,7 +52,6 @@ def _(mo):
 
 @app.cell
 def _(pd):
-    # Anscombe's Quartet - famous datasets with identical statistics
     anscombe = pd.DataFrame({
         'x1': [10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5],
         'y1': [8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68],
@@ -169,7 +171,6 @@ def _(pd):
 
 @app.cell
 def _(LinearRegression, mpg_clean, r2_score):
-    # What AI would report
     X_mpg = mpg_clean['horsepower'].values.reshape(-1, 1)
     y_mpg = mpg_clean['mpg'].values
 
@@ -231,8 +232,10 @@ def _(mo, r2_mpg):
     ### The Problem:
 
     $R^2$ = {r2_mpg:.3f} looks decent, but:
-    - The plots shows a clear nonlinearity.
-    - The linear model is systematically wrong. It underestimates at extremes and overestimates in middle.
+    - The plots shows a clear nonlinearity in the data.
+    - Residuals are not normally distributed
+
+    The linear model is wrong.
 
     **Just asking an LLM for a linear regression, you might not catch this unless you tell it to check.**
     """)

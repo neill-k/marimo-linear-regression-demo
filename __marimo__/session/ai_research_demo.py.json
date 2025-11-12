@@ -19,12 +19,12 @@
     },
     {
       "id": "MJUe",
-      "code_hash": "3162a8e540625b93616709b87e97fe61",
+      "code_hash": "741efa367dd6c873d01fbb7eed6c9462",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"linear-regression-example\">Linear Regression Example</h1>\n<h2 id=\"or-can-i-just-ask-ai-to-analyze-the-data\">... or can I just ask AI to \"analyze the data\"?</h2>\n<span class=\"paragraph\">Imagine that you ask your favorite chatbot to run a linear regression on 4 sets of data.</span></span>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"linear-regression-example\">Linear Regression Example</h1>\n<h2 id=\"or-can-i-just-ask-ai-to-analyze-the-data\">... or can I just ask AI to \"analyze the data\"?</h2>\n<span class=\"paragraph\">Imagine that you've asked a chatbot how to run linear regression on four sets of data.</span></span>"
           }
         }
       ],
